@@ -2,7 +2,6 @@ import streamlit as st
 import os
 from groq import Groq
 
-# Initialize Groq client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def nutrition_chat(user_id):
@@ -16,7 +15,7 @@ def nutrition_chat(user_id):
         if uploaded:
             if uploaded.type == "application/pdf":
                 try:
-                    import fitz  # PyMuPDF
+                    import fitz  
                     doc = fitz.open(stream=uploaded.read(), filetype="pdf")
                     text = "\n".join([page.get_text() for page in doc])
                 except:
