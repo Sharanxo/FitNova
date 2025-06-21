@@ -7,7 +7,6 @@ from datetime import datetime
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-# Get context for user (BMI, goals, recent workouts)
 def get_user_context(user_id):
     user = query_db("SELECT * FROM users WHERE id=%s", (user_id,), fetchone=True)
     if not user:
@@ -47,11 +46,10 @@ def get_user_context(user_id):
         f"Recent Workouts:\n{workout_info}"
     )
 
-# Detect goal-related message
+
 def is_goal_related(message):
     return any(word in message.lower() for word in ["i want to", "my goal is", "lose", "gain", "burn", "reduce", "increase"])
 
-# Extract structured goal from message using AI
 def extract_goal_from_message(message):
     prompt = f"""
 Extract a structured fitness goal from this text:
