@@ -2,7 +2,6 @@ import streamlit as st
 from db import query_db
 from datetime import date
 
-# Calories burned per minute for each exercise type
 calories_per_min = {
     "Running": 11.4,
     "Walking": 4.0,
@@ -13,13 +12,12 @@ calories_per_min = {
     "Swimming": 9.5,
     "Dancing": 5.5,
     "Jump Rope": 10.0,
-    "Other": 5.0  # Default value for custom exercises
+    "Other": 5.0 
 }
 
 def log_workout(user_id):
     st.subheader("🏋️ Log Workout")
 
-    # Select exercise type
     exercise_type = st.selectbox("Select Exercise Type", list(calories_per_min.keys()))
 
     if exercise_type == "Other":
@@ -27,11 +25,9 @@ def log_workout(user_id):
     else:
         exercise = exercise_type
 
-    # Enter duration
     duration = st.number_input("Duration (mins)", min_value=1)
 
     if exercise:
-        # Estimate calories burned
         estimated_calories = round(calories_per_min.get(exercise_type, 5.0) * duration)
         st.info(f"Estimated Calories Burned: {estimated_calories} kcal")
 
@@ -43,7 +39,6 @@ def log_workout(user_id):
                 commit=True
             )
 
-            # Update duration-based goal (e.g., Running goal)
             query_db(
                 """
                 UPDATE goals
@@ -54,7 +49,6 @@ def log_workout(user_id):
                 commit=True
             )
 
-            # Mark duration goal complete if reached
             query_db(
                 """
                 UPDATE goals
@@ -65,7 +59,6 @@ def log_workout(user_id):
                 commit=True
             )
 
-            # Update calories-based goal
             query_db(
                 """
                 UPDATE goals
@@ -76,7 +69,6 @@ def log_workout(user_id):
                 commit=True
             )
 
-            # Mark calorie goal complete if reached
             query_db(
                 """
                 UPDATE goals
