@@ -6,14 +6,14 @@ import plotly.express as px
 def show_dashboard(user_id):
     st.header("📊 Dashboard")
 
-    # Fetch workout data including exercise
+
     workouts = query_db("SELECT date, exercise, calories_burned FROM workouts WHERE user_id=%s", (user_id,))
     if workouts:
         df = pd.DataFrame(workouts)
         df["date"] = pd.to_datetime(df["date"])
         df = df.sort_values("date")
 
-        # Bar chart: Calories burned over time
+        # Bar chart
         st.subheader("🔥 Calories Burned Over Time")
         bar_chart = px.bar(
             df,
@@ -24,7 +24,7 @@ def show_dashboard(user_id):
         )
         st.plotly_chart(bar_chart, use_container_width=True)
 
-        # Bar chart: Calories burned by workout type
+        # Bar chart
         st.subheader("💪 Calories Burned by Exercise Type")
         exercise_summary = df.groupby("exercise", as_index=False)["calories_burned"].sum()
         exercise_chart = px.bar(
