@@ -21,7 +21,7 @@ def main():
             register()
     else:
         # --- Sidebar UI ---
-        st.sidebar.image("/home/saran-xo/Desktop/Fitsmart/ChatGPT Image Jun 21, 2025, 10_34_51 AM.png", width=120)  # ✅ Add logo to sidebar
+        st.sidebar.image("ChatGPT Image Jun 21, 2025, 10_34_51 AM.png", width=120)  # ✅ Add logo to sidebar
         st.sidebar.markdown(f"👋 Hello, **{st.session_state.user['name']}**")
         show_tip(st.session_state.user_id)
 
