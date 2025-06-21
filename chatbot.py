@@ -76,7 +76,6 @@ If no valid goal is found, return an empty JSON: {{}}
     except Exception as e:
         return {}
 
-# Fitness Chatbot UI
 def fitness_chatbot(user_id):
     st.subheader("🤖 Personalized Fitness Chatbot")
 
@@ -86,7 +85,6 @@ def fitness_chatbot(user_id):
     if "quick_ask_message" not in st.session_state:
         st.session_state.quick_ask_message = ""
 
-    # Quick Ask Buttons
     st.markdown("**Quick Ask:**")
     cols = st.columns(3)
     with cols[0]:
@@ -105,10 +103,8 @@ def fitness_chatbot(user_id):
         st.session_state.chat_history.append({"role": "user", "content": user_msg})
         st.session_state.quick_ask_message = ""
 
-        # Get user profile context
         context = get_user_context(user_id)
 
-        # Check for goal intent
         goal_data = {}
         if is_goal_related(user_msg):
             goal_data = extract_goal_from_message(user_msg)
@@ -126,7 +122,6 @@ def fitness_chatbot(user_id):
                 except Exception as e:
                     st.error(f"⚠️ Goal save failed: {e}")
 
-        # Prepare message for LLM
         messages = [
             {"role": "system", "content": "You are Nova AI, a friendly fitness assistant. Provide helpful, personalized advice."},
             {"role": "system", "content": context}
@@ -146,12 +141,10 @@ def fitness_chatbot(user_id):
             (user_id, user_msg, ai_reply), commit=True
         )
 
-    # Display chat history
     for msg in st.session_state.chat_history:
         speaker = "🧍‍♂️ You" if msg["role"] == "user" else "🤖 Nova AI"
         st.markdown(f"**{speaker}:** {msg['content']}")
 
-# Optional: Display recent chatbot usage
 def show_chat_analytics(user_id):
     st.subheader("📊 Chatbot Usage")
     logs = query_db("SELECT user_message, timestamp FROM chat_logs WHERE user_id=%s ORDER BY timestamp DESC LIMIT 10", (user_id,))
