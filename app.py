@@ -20,12 +20,10 @@ def main():
         else:
             register()
     else:
-        # --- Sidebar UI ---
-        st.sidebar.image("ChatGPT Image Jun 21, 2025, 10_34_51 AM.png", width=120)  # ✅ Add logo to sidebar
+        st.sidebar.image("logo.png", width=120)  
         st.sidebar.markdown(f"👋 Hello, **{st.session_state.user['name']}**")
         show_tip(st.session_state.user_id)
-
-        # --- Welcome Banner ---
+        
         st.markdown("""
         <div style='text-align:center; padding: 10px 0;'>
             <h2 style='color:#FF6B6B;'>🏋️ Welcome to <b>FitNova</b></h2>
@@ -33,7 +31,6 @@ def main():
         </div>
         """, unsafe_allow_html=True)
 
-        # --- Main Menu ---
         choice = st.sidebar.radio(
             "📂 Navigation", 
             ["Dashboard", "BMI", "Profile", "Workout", "Goals", "Chatbot", "Nutrition", "Report", "Logout"]
