@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 from groq import Groq
 
-# Initialize Groq client
+
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def set_goal(user_id):
@@ -38,9 +38,9 @@ def view_goals(user_id):
 
         st.markdown(f"### {g['goal_type']}")
         st.write(f"Progress: {g['current_value']} / {g['target_value']} ({pct:.1f}%)")
-        st.progress(min(pct / 100, 1.0))  # Streamlit expects 0.0 - 1.0
+        st.progress(min(pct / 100, 1.0)) 
 
-        # Auto-mark goal as completed
+
         if g["status"] != "Completed" and pct >= 100:
             query_db("UPDATE goals SET status='Completed' WHERE id=%s", (g["id"],), commit=True)
             st.success(f"🎉 Goal '{g['goal_type']}' marked as Completed!")
