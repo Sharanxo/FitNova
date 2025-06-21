@@ -1,0 +1,8 @@
+streamlit
+mysql-connector-python
+bcrypt
+fpdf
+openai
+python-dotenv
+plotly
+PyMuPDF
