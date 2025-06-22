@@ -178,7 +178,7 @@ fitnova/
 
 ## 👤 Author
 
-Made by [sharan kk]  
+Made by [sharan kk] [sharankk2310@gmail.com]  
 
 
 ## License
