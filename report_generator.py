@@ -15,7 +15,7 @@ def clean_text(text):
 class PDF(FPDF):
     def header(self):
         self.set_font("Arial", 'B', 14)
-        self.cell(0, 10, clean_text("FitVerse AI – Fitness Report"), ln=True, align='C')
+        self.cell(0, 10, clean_text("Nova AI – Fitness Report"), ln=True, align='C')
         self.set_font("Arial", '', 10)
         self.cell(0, 10, clean_text(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}"), ln=True, align='C')
         self.ln(10)
