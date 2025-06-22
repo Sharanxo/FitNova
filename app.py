@@ -20,7 +20,7 @@ def main():
         else:
             register()
     else:
-        st.sidebar.image("logo.png", width=120)  
+        st.sidebar.image("Logo.png", width=120)  
         st.sidebar.markdown(f"👋 Hello, **{st.session_state.user['name']}**")
         show_tip(st.session_state.user_id)
         
