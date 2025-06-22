@@ -62,7 +62,7 @@ The built-in chatbot "Nova AI" can:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/fitnova.git
+git clone https://github.com/Sharanxo/FitNova-AI.git
 cd fitnova
 ```
 
@@ -157,6 +157,24 @@ fitnova/
 ├── requirements.txt
 └── README.md
 ```
+
+## 🖥️ Screenshots
+
+### 📊 Dashboard Overview
+![Dashboard](Demo/Dashboard.png)
+
+### 🤖 AI Chatbot in Action
+![Chatbot](Demo/Nova-AI.png)
+
+### 🥗 Nutrition Assistant
+![Nutrition](Demo/Nutrition-Assistant.png)
+
+### 🏋️ Workout-Log Overview
+![Workout-Logs](Demo/Workout-Log.png)
+
+### 🎯 Goals Overview
+![Goals](Demo/Goals.png)
+
 
 ## 👤 Author
 
