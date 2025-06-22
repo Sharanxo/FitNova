@@ -9,7 +9,8 @@ dbconfig = {
     "user": os.getenv("MYSQL_USER"),
     "password": os.getenv("MYSQL_PASS"),
     "host": os.getenv("MYSQL_HOST"),
-    "database": os.getenv("MYSQL_DB")
+    "database": os.getenv("MYSQL_DB"),
+    "port": os.getenv("MYSQL_PORT")
 }
 
 pool = mysql.connector.pooling.MySQLConnectionPool(pool_name="mypool", pool_size=5, **dbconfig)
